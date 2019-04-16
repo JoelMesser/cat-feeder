@@ -2,6 +2,7 @@
  
 import RPi.GPIO as GPIO
 import time
+from feederDB import logFeeding
  
 def feed():
     # let the GPIO library know where we've connected our servo to the Pi
@@ -23,6 +24,7 @@ def feed():
         # always cleanup after ourselves
         servo.stop()
         GPIO.cleanup()
+        logFeeding("Automatic")
  
 if __name__ == '__main__':
     # kick off the feeding process (move the servo)
