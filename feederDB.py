@@ -23,8 +23,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
-resetButtonThread = Thread(target = resetButtonLoop)
-resetButtonThread.start()
 
 class FeedEntry(db.Model):
   id = db.Column(db.Integer, primary_key = True)
@@ -72,3 +70,7 @@ def logFeeding(user):
   db.session.commit()
 
   return jsonify(newFeeding)
+
+if __name__ == '__main__':
+  resetButtonThread = Thread(target = resetButtonLoop)
+  resetButtonThread.start()
